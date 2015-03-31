@@ -1,31 +1,18 @@
-@prefix : <http://courseweb.lis.illinois.edu/lis/2015sp/lis590odl/gslis/> .
+@prefix course: <https://github.com/f0rer0/course/blob/master/course.ttl> .
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
-@prefix tl: <http://purl.org/NET/c4dm/timeline.owl#> .
-@prefix dbp: <http://dbpedia.org/resource/> .
-@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
-@prefix org: <http://www.w3.org/ns/org#> .
-@prefix owl: <http://www.w3.org/2002/07/owl#> .
-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix xml: <http://www.w3.org/XML/1998/namespace> .
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix xsp: <http://www.owl-ontologies.com/2005/08/07/xsp.owl#> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
-@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix gslis: <http://courseweb.lis.illinois.edu/lis/2015sp/lis590odl/gslis/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix swrl: <http://www.w3.org/2003/11/swrl#> .
-@prefix wped: <http://en.wikipedia.org/wiki/> .
-@prefix dolce: <http://ontology.ip.rm.cnr.it/ontologies/DOLCE-Lite#> .
-@prefix event: <http://purl.org/NET/c4dm/event.owl#> .
-@prefix gslis: <http://courseweb.lis.illinois.edu/lis/2015sp/lis590odl/RDF/gslis.ttl> .
-@prefix swrlb: <http://www.w3.org/2003/11/swrlb#> .
-@prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix protege: <http://protege.stanford.edu/plugins/owl/protege#> .
-@base <http://people.lis.illinois.edu/~dforero2/LIS590ODL/dforero2.ttl> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<http://people.lis.illinois.edu/~dforero2/LIS590ODL/dforero2.ttl> rdf:type owl:Ontology ;
+@base <https://github.com/f0rer0/course/blob/master/course.ttl> .
+
+<https://github.com/f0rer0/course/blob/master/course.ttl> rdf:type owl:Ontology ;
                                                                   
-                                                                  dc:title "GSLIS Forero Ontology" ;
+                                                                  dc:title "GSLIS Course Ontology" ;
                                                                   
                                                                   owl:imports <http://courseweb.lis.illinois.edu/lis/2015sp/lis590odl/RDF/gslis.ttl> ,
                                                                               <http://purl.org/NET/c4dm/event.owl> ,
@@ -43,25 +30,25 @@
 
 ###  http://courseweb.lis.illinois.edu/lis/2015sp/lis590odl/gslis/hasPrerequisite
 
-:hasPrerequisite rdf:type owl:ObjectProperty ;
+course:hasPrerequisite rdf:type owl:ObjectProperty ;
                  
                  rdfs:comment "has an object course that must be completed before enrolling in subject course."@en ;
                  
-                 rdfs:domain :Course ;
+                 rdfs:domain course:Course ;
                  
-                 rdfs:range :Course .
+                 rdfs:range course:Course .
 
 
 
 ###  http://courseweb.lis.illinois.edu/lis/2015sp/lis590odl/gslis/hasRelatedCourse
 
-:hasRelatedCourse rdf:type owl:ObjectProperty ;
+course:hasRelatedCourse rdf:type owl:ObjectProperty ;
                   
                   rdfs:comment "has a relation between programs and related courses"@en ;
                   
-                  rdfs:domain :Program ;
+                  rdfs:domain gslis:Program ;
                   
-                  rdfs:range :RelatedCourse .
+                  rdfs:range course:RelatedCourse .
 
 
 
@@ -76,11 +63,11 @@
 
 ###  http://courseweb.lis.illinois.edu/lis/2015sp/lis590odl/gslis/hasCourseID
 
-:hasCourseID rdf:type owl:DatatypeProperty ;
+course:hasCourseID rdf:type owl:DatatypeProperty ;
              
              rdfs:comment "has an unique identifier of the course made up of the department abbreviation a three digit number and an option abbreviation for a particular variation of the course."@en ;
              
-             rdfs:domain :Course ;
+             rdfs:domain course:Course ;
              
              rdfs:range xsd:string .
 
@@ -88,11 +75,11 @@
 
 ###  http://courseweb.lis.illinois.edu/lis/2015sp/lis590odl/gslis/hasCourseName
 
-:hasCourseName rdf:type owl:DatatypeProperty ;
+course:hasCourseName rdf:type owl:DatatypeProperty ;
                
                rdfs:comment "has a full name of course without abbreviation."@en ;
                
-               rdfs:domain :Course ;
+               rdfs:domain course:Course ;
                
                rdfs:range xsd:string .
 
@@ -100,11 +87,11 @@
 
 ###  http://courseweb.lis.illinois.edu/lis/2015sp/lis590odl/gslis/hasCredit
 
-:hasCredit rdf:type owl:DatatypeProperty ;
+course:hasCredit rdf:type owl:DatatypeProperty ;
            
            rdfs:comment "has an integer value of credits for course"@en ;
            
-           rdfs:domain :Course ;
+           rdfs:domain course:Course ;
            
            rdfs:range xsd:nonNegativeInteger .
 
@@ -112,13 +99,13 @@
 
 ###  http://courseweb.lis.illinois.edu/lis/2015sp/lis590odl/gslis/hasCreditType
 
-:hasCreditType rdf:type owl:DatatypeProperty ;
+course:hasCreditType rdf:type owl:DatatypeProperty ;
                
                rdfs:comment "has a kind of credit either UG (Undergraduate) or GR (Graduate)."@en ;
                
-               rdfs:domain :Course ;
+               rdfs:domain course:Course ;
                
-               rdfs:subPropertyOf :hasCredit ;
+               rdfs:subPropertyOf course:hasCredit ;
                
                rdfs:range xsd:string .
 
@@ -126,11 +113,11 @@
 
 ###  http://courseweb.lis.illinois.edu/lis/2015sp/lis590odl/gslis/hasDescription
 
-:hasDescription rdf:type owl:DatatypeProperty ;
+course:hasDescription rdf:type owl:DatatypeProperty ;
                 
                 rdfs:comment "has description for the curriculum and themes of the course content."@en ;
                 
-                rdfs:domain :Course ;
+                rdfs:domain course:Course ;
                 
                 rdfs:range xsd:string .
 
@@ -138,11 +125,11 @@
 
 ###  http://courseweb.lis.illinois.edu/lis/2015sp/lis590odl/gslis/hasRelatedCourseQuantity
 
-:hasRelatedCourseQuantity rdf:type owl:DatatypeProperty ;
+course:hasRelatedCourseQuantity rdf:type owl:DatatypeProperty ;
                           
                           rdfs:comment "Integer value of number of courses required for a particular related set of courses in a program."@en ;
                           
-                          rdfs:domain :hasRelatedCourse ;
+                          rdfs:domain course:hasRelatedCourse ;
                           
                           rdfs:range xsd:decimal .
 
@@ -159,9 +146,9 @@
 
 ###  http://courseweb.lis.illinois.edu/lis/2015sp/lis590odl/gslis/Course
 
-:Course rdf:type owl:Class ;
+course:Course rdf:type owl:Class ;
         
-        rdfs:subClassOf :Activity ;
+        rdfs:subClassOf gslis:Activity ;
         
         rdfs:comment "This class consists of specific program that are usually credit bearing and have a defined curriculum."@en .
 
@@ -169,9 +156,9 @@
 
 ###  http://courseweb.lis.illinois.edu/lis/2015sp/lis590odl/gslis/OtherProgram
 
-:OtherProgram rdf:type owl:Class ;
+course:OtherProgram rdf:type owl:Class ;
               
-              rdfs:subClassOf :Program_of_Study ;
+              rdfs:subClassOf gslis:Program_of_Study ;
               
               rdfs:comment "Programs that are not degree granting."@en .
 
@@ -179,9 +166,9 @@
 
 ###  http://courseweb.lis.illinois.edu/lis/2015sp/lis590odl/gslis/RelatedCourse
 
-:RelatedCourse rdf:type owl:Class ;
+course:RelatedCourse rdf:type owl:Class ;
                
-               rdfs:subClassOf :Course ;
+               rdfs:subClassOf course:Course ;
                
                rdfs:comment "Grouping of equivalent courses for a particular Program"@en .
 
@@ -189,7 +176,7 @@
 
 ###  http://courseweb.lis.illinois.edu/lis/2015sp/lis590odl/gslis/hasRelatedCourse
 
-:hasRelatedCourse rdf:type owl:Class ;
+course:hasRelatedCourse rdf:type owl:Class ;
                   
                   rdfs:comment "has a relation between programs and related courses"@en .
 
@@ -212,7 +199,7 @@ owl:subProperty rdf:type owl:Class .
 
 ###  http://courseweb.lis.illinois.edu/lis/2015sp/lis590odl/gslis/hasRelatedCourseQuantity
 
-:hasRelatedCourseQuantity rdf:type owl:NamedIndividual ,
+course:hasRelatedCourseQuantity rdf:type owl:NamedIndividual ,
                                    owl:subProperty ;
                           
                           rdfs:comment "Integer value of number of courses required for a particular related set of courses in a program."@en .
